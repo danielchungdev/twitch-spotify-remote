@@ -1,0 +1,25 @@
+{
+  "name": "twitch-spotify-remote",
+  "version": "1.0.0",
+  "description": "twitchchat spotify queue",
+  "main": "bot.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pikachungg/twitch-spotify-remote.git"
+  },
+  "author": "Pikachungg",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pikachungg/twitch-spotify-remote/issues"
+  },
+  "homepage": "https://github.com/pikachungg/twitch-spotify-remote#readme",
+  "dependencies": {
+    "tmi.js": "^1.7.5"
+  },
+  "devDependencies": {
+    "dotenv": "^8.2.0"
+  }
+}
