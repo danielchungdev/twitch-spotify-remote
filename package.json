@@ -18,7 +18,9 @@
   },
   "homepage": "https://github.com/pikachungg/twitch-spotify-remote#readme",
   "dependencies": {
+    "btoa-atob": "^0.1.2",
     "node-fetch": "^2.6.1",
+    "open": "^8.0.4",
     "punycode": "^2.1.1",
     "spotify-web-api-node": "^5.0.2",
     "tmi.js": "^1.7.5"
