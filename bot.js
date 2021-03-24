@@ -1,50 +1,37 @@
+const spotify = require("./spotify");
 const tmi = require('tmi.js');
-require('dotenv').config();
-
-// Define configuration options
 const opts = {
-  identity: {
-    username: process.env.BOT_USERNAME,
-    password: process.env.OAUTH_TOKEN
-  },
-  channels: [
-    process.env.BOT_USERNAME
-  ]
+    identity: {
+        username: 'SpotifyControl',
+        password: 'oauth:x8kpeomwwcur29ocsliq52214gxqda'
+    },
+    channels: [
+        'pikachungg'
+    ]
 };
-
-// Create a client with our options
 const client = new tmi.client(opts);
+client.connect();
+
+const onMessageHandler = (target, context, msg, self) => {
+    if (self){
+        return;
+    }
+     commandName = msg.slice(0, 2);
+    if (commandName === '!q') {
+        const song = msg.slice(3);
+        const exists = spotify.addToQueue(song);
+        client.say(target, `Queue'd ${song}`);
+        console.log(`* Executed ${commandName} command`);
+    }
+    else {
+        console.log(`* Unknown command ${commandName}`);
+    }
+}
+
+const onConnectedHandler = (addr, port) => {
+    console.log(`* Connected to ${addr}:${port}`);
+}
+
 // Register our event handlers (defined below)
 client.on('message', onMessageHandler);
 client.on('connected', onConnectedHandler);
-
-// Connect to Twitch:
-client.connect();
-
-// Called every time a message comes in
-function onMessageHandler (target, context, msg, self) {
-  if (self) { return; } // Ignore messages from the bot
-
-  // Remove whitespace from chat message
-  const commandName = msg.trim();
-
-  // If the command is known, let's execute it
-  if (commandName === '!dice') {
-    const num = rollDice();
-    client.say(target, `You rolled a ${num}`);
-    console.log(`* Executed ${commandName} command`);
-  } else {
-    console.log(`* Unknown command ${commandName}`);
-  }
-}
-
-// Function called when the "dice" command is issued
-function rollDice () {
-  const sides = 6;
-  return Math.floor(Math.random() * sides) + 1;
-}
-
-// Called every time the bot connects to Twitch chat
-function onConnectedHandler (addr, port) {
-  console.log(`* Connected to ${addr}:${port}`);
-}

@@ -4,6 +4,7 @@
   "description": "twitchchat spotify queue",
   "main": "bot.js",
   "scripts": {
+    "start": "nodemon bot.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -17,6 +18,9 @@
   },
   "homepage": "https://github.com/pikachungg/twitch-spotify-remote#readme",
   "dependencies": {
+    "node-fetch": "^2.6.1",
+    "punycode": "^2.1.1",
+    "spotify-web-api-node": "^5.0.2",
     "tmi.js": "^1.7.5"
   },
   "devDependencies": {
